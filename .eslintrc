@@ -1,0 +1,10 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "rules": {
+    "object-curly-spacing": 1,
+    "react/jsx-filename-extension": 0,
+    "no-use-before-define": 0,
+    "react/destructuring-assignment": 0
+  },
+  "parser": "babel-eslint"
+}
