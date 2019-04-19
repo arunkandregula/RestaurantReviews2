@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 
 const styles = StyleSheet.create({
   restaurantRow: {
@@ -13,6 +13,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     minWidth: 50
+  },
+  button: {
+    borderColor: '#0066CC',
+    borderWidth: 1,
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+  },
+  buttonText: {
+    color: '#0066CC',
+    fontSize: 12
   }
 });
 
@@ -42,12 +53,13 @@ class RestaurantRow extends React.Component {
           <Text style={{ color: "grey" }}>{place.address}</Text>
         </View>
         <View style={styles.edges}>
-          <Button
-            title="info"
-            accessibilityLabel="info"
-            color="#004567"
+          <TouchableHighlight
+            style={styles.button}
             onPress={this.handlePress}
-          />
+            underlayColor="#0066CC"
+          >
+            <Text style={styles.buttonText}>Info</Text>
+          </TouchableHighlight>
         </View>
       </View>
       {
