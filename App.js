@@ -7,7 +7,8 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput, ScrollView } from "react-native";
+import Header from "components/Header";
 
 const DATA_URL = "http://localhost:8080/places";
 // eslint-disable-next-line react/prefer-stateless-function
@@ -71,14 +72,14 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Restaurant Reviews2</Text>
+        <Header text="Restaurant Reviews2"></Header>
         <TextInput
           style={styles.input}
           placeholder="Enter search text..."
           onChangeText={this.handleChangeText}
           value={this.state.searchText}
         />
-        <View style={styles.restaurantList}>{this.renderRestaurantList()}</View>
+        <ScrollView contentContainerStyle={styles.restaurantList}>{this.renderRestaurantList()}</ScrollView>
       </View>
     );
   }
@@ -88,12 +89,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5FCFF"
-  },
-  header: {
-    fontSize: 30,
-    textAlign: "center",
-    padding: 40,
-    color: "#0066CC"
   },
   restaurantRow: {
     flexDirection: "row"
@@ -111,7 +106,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderBottomWidth: 1,
     borderColor: "#ddd",
-    backgroundColor: "#F5F5F5",
-    marginBottom: 30
+    backgroundColor: "#F5F5F5"
+  },
+  restaurantList: {
+    paddingTop: 30
   }
 });

@@ -139,6 +139,34 @@
       "address": "2454 Preston St",
       "image": "4.jpg",
       "rating": 2
+    },
+    {
+      "id": 21,
+      "name": "Hyd biryani",
+      "address": "123 Milpitas St",
+      "image": "1.jpg",
+      "rating": 2
+    },
+    {
+      "id": 22,
+      "name": "Vijayawada Biryaniz",
+      "address": "18 S Abbott Ave",
+      "image": "2.jpg",
+      "rating": 2
+    },
+    {
+      "id": 23,
+      "name": "Biryaniz",
+      "address": "6830 Village Parkway",
+      "image": "3.jpg",
+      "rating": 4
+    },
+    {
+      "id": 24,
+      "name": "Bawarchi",
+      "address": "246 Castro St",
+      "image": "4.jpg",
+      "rating": 4
     }
   ]
 }

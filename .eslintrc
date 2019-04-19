@@ -4,7 +4,13 @@
     "object-curly-spacing": 1,
     "react/jsx-filename-extension": 0,
     "no-use-before-define": 0,
-    "react/destructuring-assignment": 0
+    "react/destructuring-assignment": 0,
+    "import/no-extraneous-dependencies": ["error", { "packageDir": "." }],
+    "import/no-unresolved": [2, { "caseSensitive": false }]
   },
-  "parser": "babel-eslint"
+  "import/resolver": {
+    "node": {
+      "paths": ["./src"]
+    }
+  }
 }
