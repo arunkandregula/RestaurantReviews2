@@ -8,6 +8,7 @@
     "lint": "npx eslint *.js **/*.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.8.6",
     "react-native": "0.59.4"
   },

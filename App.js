@@ -10,6 +10,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, TextInput, FlatList } from "react-native";
 import Header from "components/Header";
 import RestaurantRow from 'components/RestaurantRow';
+import axios from 'axios';
 
 const DATA_URL = "http://localhost:8080/places";
 // eslint-disable-next-line react/prefer-stateless-function
@@ -21,11 +22,10 @@ export default class App extends Component {
 
   componentDidMount() {
     /* global fetch */
-    fetch(DATA_URL)
-      .then(resp => resp.json())
+    axios(DATA_URL)
       .then(resp => {
         this.setState({
-          places: resp
+          places: resp.data
         });
       });
   }
