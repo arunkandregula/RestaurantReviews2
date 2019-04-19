@@ -7,8 +7,9 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, ScrollView } from "react-native";
+import { StyleSheet, Text, View, TextInput, FlatList } from "react-native";
 import Header from "components/Header";
+import RestaurantRow from 'components/RestaurantRow';
 
 const DATA_URL = "http://localhost:8080/places";
 // eslint-disable-next-line react/prefer-stateless-function
@@ -29,45 +30,22 @@ export default class App extends Component {
       });
   }
 
-  renderRestaurantList = () => {
-    const map = this.state.places
+  handleChangeText = searchText => {
+    this.setState({
+      searchText
+    });
+  };
+
+  getData() {
+    return this.state.places
       .filter(
         eachPlace =>
           !this.state.searchText ||
           eachPlace.name
             .toLowerCase()
             .includes(this.state.searchText.toLowerCase())
-      )
-      .map((eachPlace, i) => {
-        return (
-          <View
-            style={[
-              styles.restaurantRow,
-              { backgroundColor: i % 2 === 0 ? "white" : "#F3F3F7" }
-            ]}
-            key={eachPlace.name}
-          >
-            <View style={styles.edges}>
-              <Text>{eachPlace.id}</Text>
-            </View>
-            <View style={styles.middleColumn}>
-              <Text>{eachPlace.name}</Text>
-              <Text style={{ color: "grey" }}>{eachPlace.address}</Text>
-            </View>
-            <View style={styles.edges}>
-              <Text>info</Text>
-            </View>
-          </View>
-        );
-      });
-    return map;
-  };
-
-  handleChangeText = searchText => {
-    this.setState({
-      searchText
-    });
-  };
+      );
+  }
 
   render() {
     return (
@@ -79,7 +57,13 @@ export default class App extends Component {
           onChangeText={this.handleChangeText}
           value={this.state.searchText}
         />
-        <ScrollView contentContainerStyle={styles.restaurantList}>{this.renderRestaurantList()}</ScrollView>
+
+        <FlatList
+          data={this.getData()}
+          renderItem={({ item, index }) => <RestaurantRow place={item} index={index} />}
+          keyExtractor={(item => item.name)}
+          initialNumToRender={24}
+        />
       </View>
     );
   }
@@ -89,17 +73,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5FCFF"
-  },
-  restaurantRow: {
-    flexDirection: "row"
-  },
-  middleColumn: {
-    flex: 8
-  },
-  edges: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
   },
   input: {
     padding: 10,
