@@ -9,6 +9,7 @@ import {
   Image
 } from 'react-native';
 import { image1, image2, image3, image4 } from 'images';
+import Stars from './Stars';
 
 const styles = StyleSheet.create({
   restaurantRow: {
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    minWidth: 50
+    minWidth: 50,
   },
   button: {
     borderColor: '#0066CC',
@@ -69,7 +70,7 @@ class RestaurantRow extends React.Component {
         key={place.name}
       >
         <View style={styles.edges}>
-          <Text>{place.id}</Text>
+          <Stars rating={place.rating} />
         </View>
         <View style={styles.middleColumn}>
           <Text>{place.name}</Text>

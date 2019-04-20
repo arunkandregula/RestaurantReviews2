@@ -29,8 +29,6 @@
 - Fetch may have problems with how it handles cookies.
 - Axios parses the results for us as json. ( With fetch, we have to parse results to json by ourselves. Its an extra step with fetch. )
 
-# Current Step:
-
 7. Display local images in react-native
 
 - Lets create package.json with simple contents:
@@ -60,3 +58,15 @@ for the current device. It could be
 1. images/pizza.png OR
 2. images/pizza@2x.png OR
 3. images/pizza@3x.png
+
+# Current Step:
+
+8. Add Icons to a React Native App with React Native Vector Icons
+
+- There are many high quality icon libraries, so we’ll use an npm vector icon library to display svg icons in our application. This also requires a link step, which changes the underlying iOS and Android projects by linking the library to the native code.
+- yarn add react-native-vector-icons
+- In order to use icons in react-native, we have to one extra link step.
+
+```
+react-native link
+```
