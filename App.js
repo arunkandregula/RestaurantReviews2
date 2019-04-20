@@ -7,10 +7,11 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, FlatList } from "react-native";
+import { StyleSheet, Text, View, TextInput, FlatList, Image } from "react-native";
 import Header from "components/Header";
 import RestaurantRow from 'components/RestaurantRow';
 import axios from 'axios';
+import PizzaImage from 'images/pizza.png';
 
 const DATA_URL = "http://localhost:8080/places";
 // eslint-disable-next-line react/prefer-stateless-function
@@ -50,6 +51,9 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={{ alignItems: 'center', marginTop: 30 }}>
+          <Image source={PizzaImage} />
+        </View>
         <Header text="Restaurant Reviews2"></Header>
         <TextInput
           style={styles.input}

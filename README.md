@@ -24,9 +24,39 @@
    -TouchableWithoutFeedback ( styles wont be applied as this is meant to wrap any other component. Eg. image.)
    -TouchableHighlight ( To customize the highlight color, we do it using attribute underlayColor="#0066CC" )
 
-# Current Step:
-
 6. Replace fetch with axios.
 
 - Fetch may have problems with how it handles cookies.
 - Axios parses the results for us as json. ( With fetch, we have to parse results to json by ourselves. Its an extra step with fetch. )
+
+# Current Step:
+
+7. Display local images in react-native
+
+- Lets create package.json with simple contents:
+
+```json
+{
+  "name": "images"
+}
+```
+
+so that we can import images using absolute import path.
+Eg.
+
+```js
+import image1 from "images";
+```
+
+- When we use
+
+```
+import PizzaImage from 'images/pizza.png'
+```
+
+react-native automatically detect the proper file to use
+for the current device. It could be
+
+1. images/pizza.png OR
+2. images/pizza@2x.png OR
+3. images/pizza@3x.png

@@ -1,5 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  TouchableHighlight,
+  Image
+} from 'react-native';
+import { image1, image2, image3, image4 } from 'images';
 
 const styles = StyleSheet.create({
   restaurantRow: {
@@ -24,6 +33,11 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#0066CC',
     fontSize: 12
+  },
+  info: {
+    borderWidth: 1,
+    padding: 10,
+    alignItems: 'center'
   }
 });
 
@@ -37,8 +51,17 @@ class RestaurantRow extends React.Component {
       showInfo: !this.state.showInfo
     });
   }
+  getImage(imageName) {
+    switch (imageName) {
+      case '1.jpg': return image1;
+      case '2.jpg': return image2;
+      case '3.jpg': return image3;
+      case '4.jpg': return image4;
+    }
+  }
   render() {
     const { place, index } = this.props;
+    const image = this.getImage(place.image);
 
     return <View styles={{ backgroundColor: index % 2 === 0 ? "white" : "#F3F3F7" }}>
       <View
@@ -63,8 +86,16 @@ class RestaurantRow extends React.Component {
         </View>
       </View>
       {
-        this.state.showInfo && <View>
-          <Text>{place.name}</Text>
+        this.state.showInfo && <View style={styles.info}>
+          <Text>Restaurant Info</Text>
+          <Image
+            source={image}
+            style={{
+              flex: 1,
+              height: 100
+            }}
+            resizeMode="contain"
+          />
         </View>
       }
     </View >
