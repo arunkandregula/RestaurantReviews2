@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactNative, { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import ReactNative, { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Stars from 'components/Stars';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
@@ -92,34 +92,38 @@ export default class AddReview extends React.Component {
     return <View style={styles.stars}>{stars}</View>;
   }
   render() {
-    return <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#FFF' }} contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.closeButtonSection} onPress={this.handleClose} >
-          <Icon style={styles.icon} name="close" />
-        </TouchableOpacity>
-        <View style={styles.containerContents}>
-          <View style={styles.nameSection}>
-            <Text style={styles.headerText}>Add Review</Text>
-            <TextInput style={styles.input} placeholder="Name (Optional)">
-            </TextInput>
+    return <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FFF' }} behavior="padding" contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.closeButtonSection} onPress={this.handleClose} >
+            <Icon style={styles.icon} name="close" />
+          </TouchableOpacity>
+          <View style={styles.containerContents}>
+            <View style={styles.nameSection}>
+              <Text style={styles.headerText}>Add Review</Text>
+              <TextInput style={styles.input} placeholder="Name (Optional)">
+              </TextInput>
+            </View>
+            <View style={styles.ratingSection}>
+              <Text style={styles.ratingText}>Your Rating</Text>
+              {this.renderStarRatingInput()}
+            </View>
+            <View style={styles.reviewSection}>
+
+              <TextInput
+                style={[styles.input, { height: 100 }]}
+                placeholder="Enter Review..."
+                multiline={true}
+                numberOfLines={5}
+              />
+              <TouchableOpacity style={styles.button} >
+                <Text style={styles.buttonText}>Submit Review</Text>
+              </TouchableOpacity>
+
+            </View>
           </View>
-          <View style={styles.ratingSection}>
-            <Text style={styles.ratingText}>Your Rating</Text>
-            {this.renderStarRatingInput()}
-          </View>
-          <View style={styles.reviewSection}>
-            <TextInput
-              style={[styles.input, { height: 100 }]}
-              placeholder="Enter Review..."
-              multiline={true}
-              numberOfLines={5}
-            />
-            <TouchableOpacity style={styles.button} >
-              <Text style={styles.buttonText}>Submit Review</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View >
-    </KeyboardAwareScrollView>
+        </View >
+      </KeyboardAvoidingView>
+    </KeyboardAwareScrollView >
   }
 }

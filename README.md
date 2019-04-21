@@ -194,3 +194,12 @@ I solved it using contentContainerStyle={{ flexGrow: 1 }}
 
 7.  Next problem I faced is:
     When I try to enter the review text at bottom of the screen, auto scroll is NOT working. Phone Keyboard is still hiding the tect area.
+
+I solved iby wrapping the contents using KeyboardAvoidingView.
+
+```
+      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FFF' }} behavior="padding" >
+      ...
+      </KeyboardAvoidingView>
+
+```
