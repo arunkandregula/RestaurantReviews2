@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactNative, { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, ActivityIndicator } from 'react-native';
+import ReactNative, { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, ActivityIndicator, AsyncStorage } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Stars from 'components/Stars';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
@@ -82,6 +82,13 @@ export default class AddReview extends React.Component {
       rating: num
     });
   }
+  componentDidMount() {
+    AsyncStorage.getItem("reviewer_name").then(name => {
+      this.setState({
+        name
+      })
+    });
+  }
   renderStarRatingInput = () => {
     const stars = [1, 2, 3, 4, 5].map((num, i) => {
       return <TouchableOpacity key={`button-${num}`} onPress={this.changeRating.bind(null, num)}>
@@ -97,6 +104,7 @@ export default class AddReview extends React.Component {
   }
   handleSubmit = () => {
     this.setState({ submitting: true })
+    AsyncStorage.setItem("reviewer_name", this.state.name);
     ReviewService.saveReview({
       id: v4(),
       name: this.state.name,

@@ -203,8 +203,10 @@ tell that "Tabs" window should be on the top by default.
 
      ```
 
-# Current Step:
-
 15. Lets save the review when someone clicks "Submit Review" button.
 
 - Major take away here is how to show the spinner.
+
+# Current Step:
+
+16. Lets see how to load data from AsyncStorage for prefilled data.
