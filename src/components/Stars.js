@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Stars = ({ rating }) => {
+const Stars = ({ rating = 0 }) => {
   const array = [...Array(Math.floor(rating))];
   const stars = array.map((_, i) => {
     return <Icon name="star" style={styles.star} key={`star-${i}`} />;

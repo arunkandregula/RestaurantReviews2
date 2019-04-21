@@ -122,12 +122,11 @@ Now in this step, we learned some basic navigation.
 11. Lets see how to pass data between screens when navigating using StackNavigator.
 
 12. Lets see how to add bottom tabs to Stack Navigator.
+
     - We should be switch between tabs at the bottom of the screen.
     - Lets say, List tab, About tab.
     - With in List tab, All the functionality we built upto Step11 must be shown.
     - For this we have to use both
-
-# Current Step:
 
 13. Lets see how to implement model window in react-native
 
@@ -160,3 +159,38 @@ tell that "Tabs" window should be on the top by default.
 - One important behaviour is closing the modal dialog. By default, it can be closed by drag down gesture. We want to switch it off to implement close button.
 
 - this.props.navigation.goBack() will be helpful for closing the modal dialog.
+
+# Current Step:
+
+14. Lets ensure text fields Dont get covered by onScreen keyboard.
+
+- Lets add 3 fields to AddReview page.
+  1. TextField to enter name of the person giving the review
+  2. Star rating
+  3. TextArea to enter the review.
+  4. Problem is, by default, when we type our name and select the rating, we cant get to the review text area as the keyboard is hiding it.
+  5. yarn add react-native-keyboard-aware-scrollview
+  6. First Problem I faced. The moment I wrapped my AddReview component with KeyboardAwareScrollView, the inner container's flex:1 stopped working.
+
+```
+    return <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#FFF' }} >
+      <View style={styles.container}> ==> flex:1 is NOT WORKING
+      ...
+      </View>
+    </KeyboardAwareScrollView>;
+
+```
+
+I solved it using contentContainerStyle={{ flexGrow: 1 }}
+
+```
+    return <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#FFF' }} contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={styles.container}> ==> flex:1 is WORKING
+      ...
+      </View>
+    </KeyboardAwareScrollView>;
+
+```
+
+7.  Next problem I faced is:
+    When I try to enter the review text at bottom of the screen, auto scroll is NOT working. Phone Keyboard is still hiding the tect area.
