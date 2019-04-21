@@ -119,6 +119,12 @@ Now in this step, we learned some basic navigation.
 
 10. Customize stack navigator header with default
 
+11. Lets see how to pass data between screens when navigating using StackNavigator.
+
 # Current Step:
 
-11. Lets see how to pass data between screens when navigating using StackNavigator.
+12. Lets see how to add bottom tabs to Stack Navigator.
+    - We should be switch between tabs at the bottom of the screen.
+    - Lets say, List tab, About tab.
+    - With in List tab, All the functionality we built upto Step11 must be shown.
+    - For this we have to use both

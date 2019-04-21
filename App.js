@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation'
 import { View, Text } from 'react-native';
 
 import RestaurantList from 'components/RestaurantList';
 import RestaurantInfo from 'components/RestaurantInfo';
-
+import About from 'components/About';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const AppStackNavigator = createStackNavigator({
   Home: RestaurantList,
@@ -22,7 +23,30 @@ const AppStackNavigator = createStackNavigator({
     }
   });
 
-const AppContainer = createAppContainer(AppStackNavigator);
+const BottomTabNavigator = createBottomTabNavigator({
+  List: AppStackNavigator,
+  About: About
+}, {
+    tabBarOptions: {
+      labelStyle: {
+        fontSize: 12
+      },
+      activeBackgroundColor: "#E6F0FA"
+    },
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ tintColor }) => {
+        const routeName = navigation.state.routeName
+        const name = {
+          'List': 'list',
+          'About': 'info-circle'
+        }[routeName]
+        console.log(routeName)
+        return <Icon name={name} color={tintColor} size={22} />;
+      }
+    })
+  });
+
+const AppContainer = createAppContainer(BottomTabNavigator);
 
 export default class App extends React.Component {
   render() {
