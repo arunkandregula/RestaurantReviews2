@@ -8,7 +8,6 @@ import {
   TouchableHighlight,
   Image
 } from 'react-native';
-import { image1, image2, image3, image4 } from 'images';
 import Stars from './Stars';
 
 const styles = StyleSheet.create({
@@ -48,24 +47,12 @@ class RestaurantRow extends React.Component {
     showInfo: false
   }
   handlePress = () => {
-    /*
-    this.setState({
-      showInfo: !this.state.showInfo
+    this.props.navigation.navigate('Info', {
+      place: this.props.place
     });
-    */
-    this.props.navigation.navigate('Info');
-  }
-  getImage(imageName) {
-    switch (imageName) {
-      case '1.jpg': return image1;
-      case '2.jpg': return image2;
-      case '3.jpg': return image3;
-      case '4.jpg': return image4;
-    }
   }
   render() {
     const { place, index } = this.props;
-    const image = this.getImage(place.image);
 
     return <View styles={{ backgroundColor: index % 2 === 0 ? "white" : "#F3F3F7" }}>
       <View
@@ -89,19 +76,6 @@ class RestaurantRow extends React.Component {
           </TouchableHighlight>
         </View>
       </View>
-      {
-        this.state.showInfo && <View style={styles.info}>
-          <Text>Restaurant Info</Text>
-          <Image
-            source={image}
-            style={{
-              flex: 1,
-              height: 100
-            }}
-            resizeMode="contain"
-          />
-        </View>
-      }
     </View >
   }
 }

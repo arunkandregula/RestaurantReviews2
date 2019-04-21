@@ -117,6 +117,8 @@ A more cleaner way to Have App class return this AppContainer. This will give us
 
 Now in this step, we learned some basic navigation.
 
+10. Customize stack navigator header with default
+
 # Current Step:
 
-10. Customize stack navigator header with default
+11. Lets see how to pass data between screens when navigating using StackNavigator.
