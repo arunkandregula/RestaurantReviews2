@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { image1, image2, image3, image4 } from '../images';
 import Stars from './Stars';
 
@@ -21,6 +21,19 @@ const styles = StyleSheet.create({
   },
   infoContents: {
     margin: 20
+  },
+  button: {
+    borderColor: '#0066CC',
+    borderWidth: 1,
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    marginTop: 10
+  },
+  buttonText: {
+    color: '#0066CC',
+    fontSize: 12,
+    textAlign: 'center'
   }
 });
 
@@ -37,6 +50,10 @@ export default class RestaurantInfo extends React.Component {
     }
   }
 
+  openModalWindow = () => {
+    this.props.navigation.navigate('AddReview');
+  }
+
   render() {
     const place = this.props.navigation.getParam('place');
     const image = this.getImage(place.image);
@@ -46,6 +63,9 @@ export default class RestaurantInfo extends React.Component {
         <Text style={styles.infoName}>{place.name}</Text>
         <Text style={styles.infoAddress}>{place.address}</Text>
         <Stars rating={place.rating} />
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText} onPress={this.openModalWindow}>Add Review</Text>
+        </TouchableOpacity>
       </View>
     </View>;
   }

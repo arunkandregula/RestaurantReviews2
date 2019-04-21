@@ -6,6 +6,7 @@ import { View, Text } from 'react-native';
 import RestaurantList from 'components/RestaurantList';
 import RestaurantInfo from 'components/RestaurantInfo';
 import About from 'components/About';
+import AddReview from 'components/AddReview';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const AppStackNavigator = createStackNavigator({
@@ -46,7 +47,18 @@ const BottomTabNavigator = createBottomTabNavigator({
     })
   });
 
-const AppContainer = createAppContainer(BottomTabNavigator);
+const ModalStackNavigator = createStackNavigator({
+  Tabs: BottomTabNavigator,
+  AddReview: AddReview
+}, {
+    mode: 'modal',
+    headerMode: 'none',
+    defaultNavigationOptions: {
+      gesturesEnabled: false
+    }
+  });
+
+const AppContainer = createAppContainer(ModalStackNavigator);
 
 export default class App extends React.Component {
   render() {

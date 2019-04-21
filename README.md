@@ -121,10 +121,42 @@ Now in this step, we learned some basic navigation.
 
 11. Lets see how to pass data between screens when navigating using StackNavigator.
 
-# Current Step:
-
 12. Lets see how to add bottom tabs to Stack Navigator.
     - We should be switch between tabs at the bottom of the screen.
     - Lets say, List tab, About tab.
     - With in List tab, All the functionality we built upto Step11 must be shown.
     - For this we have to use both
+
+# Current Step:
+
+13. Lets see how to implement model window in react-native
+
+- One learning is when to use textAlign vs alignItems. textAlign controls current Text element, where as, alignItems controls child elements for FlexBox.
+- To implement Modal window, we need to use stack navigator that is on top of everything including TabNavigator.
+- Currently we have one StackNavigator that is below the TabNavigator. So we dont reuse it.
+- We have to create one more StackNavigator on top[ of TabNavigator.
+- In below smnippet, "Tabs" is just a key to navigate. It can be any key. It can be Tabs2 as well for instance.
+
+```
+const ModalStackNavigator = createStackNavigator({
+  Tabs: BottomTabNavigator
+}, {
+    mode: 'modal',
+    headerMode: 'none'
+  });
+```
+
+- Also when defining such StackNavigator, the order in which we define the keys matter as that determine which one should be displayed on top. For example,
+
+```
+const ModalStackNavigator = createStackNavigator({
+  Tabs: BottomTabNavigator,
+  AddReview: AddReview
+}, {
+```
+
+tell that "Tabs" window should be on the top by default.
+
+- One important behaviour is closing the modal dialog. By default, it can be closed by drag down gesture. We want to switch it off to implement close button.
+
+- this.props.navigation.goBack() will be helpful for closing the modal dialog.
