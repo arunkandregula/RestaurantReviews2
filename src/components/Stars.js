@@ -17,7 +17,7 @@ const Stars = ({ rating }) => {
     return <Icon name="star" style={styles.star} key={`star-${i}`} />;
   });
   if (rating > array.length) {
-    stars.push(<Icon name="star-half" style={styles.star} />);
+    stars.push(<Icon name="star-half" style={styles.star} key={`star-${array.length}`} />);
   }
   return <View style={styles.stars} >{stars}</View>;
 }

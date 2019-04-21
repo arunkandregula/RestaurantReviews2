@@ -48,9 +48,12 @@ class RestaurantRow extends React.Component {
     showInfo: false
   }
   handlePress = () => {
+    /*
     this.setState({
       showInfo: !this.state.showInfo
     });
+    */
+    this.props.navigation.navigate('Info');
   }
   getImage(imageName) {
     switch (imageName) {
