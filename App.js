@@ -10,7 +10,17 @@ import RestaurantInfo from 'components/RestaurantInfo';
 const AppStackNavigator = createStackNavigator({
   Home: RestaurantList,
   Info: RestaurantInfo
-});
+}, {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#0066CC',
+      },
+      headerTintColor: "white",
+      headerTitleStyle: {
+        color: 'yellow'
+      }
+    }
+  });
 
 const AppContainer = createAppContainer(AppStackNavigator);
 

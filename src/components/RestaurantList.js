@@ -16,6 +16,9 @@ import PizzaImage from 'images/pizza.png';
 const DATA_URL = "http://localhost:8080/places";
 // eslint-disable-next-line react/prefer-stateless-function
 export default class RestaurantList extends Component {
+  static navigationOptions = {
+    header: null
+  }
   state = {
     places: [],
     searchText: ""
@@ -76,7 +79,7 @@ export default class RestaurantList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#FFFFFF"
   },
   input: {
     padding: 10,

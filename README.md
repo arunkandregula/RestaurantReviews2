@@ -69,8 +69,6 @@ for the current device. It could be
 react-native link
 ```
 
-# Current Step:
-
 9. Show a New Screen with React Navigation and StackNavigator
 
 - Navigation is not built in to React Native, so we’ll use the React Navigation library to set up a navigator for our application.
@@ -118,3 +116,7 @@ export default AppContainer;
 A more cleaner way to Have App class return this AppContainer. This will give us better control at the root component to pass props liek provider in redux.
 
 Now in this step, we learned some basic navigation.
+
+# Current Step:
+
+10. Customize stack navigator header with default
