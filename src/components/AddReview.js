@@ -1,8 +1,11 @@
 import React from 'react';
-import ReactNative, { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
+import ReactNative, { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Stars from 'components/Stars';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+import { v4 } from 'uuid';
+import ReviewService from 'services/ReviewService';
+
 const styles = StyleSheet.create({
   closeButtonSection: {
     backgroundColor: '#0066CC'
@@ -68,7 +71,8 @@ export default class AddReview extends React.Component {
   state = {
     name: '',
     rating: 0,
-    review: ''
+    comment: '',
+    submitting: false
   }
   handleClose = () => {
     this.props.navigation.goBack();
@@ -91,6 +95,19 @@ export default class AddReview extends React.Component {
     });
     return <View style={styles.stars}>{stars}</View>;
   }
+  handleSubmit = () => {
+    this.setState({ submitting: true })
+    ReviewService.saveReview({
+      id: v4(),
+      name: this.state.name,
+      rating: this.state.rating,
+      comment: this.state.comment
+    }).then((result) => {
+      this.setState({ submitting: false }, () => {
+        this.props.navigation.goBack()
+      })
+    });
+  }
   render() {
     return <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FFF' }} behavior="padding" contentContainerStyle={{ flexGrow: 1 }}>
@@ -101,8 +118,12 @@ export default class AddReview extends React.Component {
           <View style={styles.containerContents}>
             <View style={styles.nameSection}>
               <Text style={styles.headerText}>Add Review</Text>
-              <TextInput style={styles.input} placeholder="Name (Optional)">
-              </TextInput>
+              <TextInput
+                style={styles.input}
+                placeholder="Name (Optional)"
+                value={this.state.name}
+                onChangeText={name => this.setState({ name })}
+              />
             </View>
             <View style={styles.ratingSection}>
               <Text style={styles.ratingText}>Your Rating</Text>
@@ -115,8 +136,19 @@ export default class AddReview extends React.Component {
                 placeholder="Enter Review..."
                 multiline={true}
                 numberOfLines={5}
+                onChangeText={comment => this.setState({ comment })}
+                value={this.state.comment}
               />
-              <TouchableOpacity style={styles.button} >
+              {
+                this.state.submitting &&
+                <ActivityIndicator
+                  size="large"
+                  color="#0066CC"
+                  style={{ padding: 10 }}
+                />
+              }
+
+              <TouchableOpacity style={[styles.button, { backgroundColor: this.state.submitting ? 'grey' : '#0066CC' }]} onPress={this.handleSubmit} disabled={this.state.submitting} >
                 <Text style={styles.buttonText}>Submit Review</Text>
               </TouchableOpacity>
 

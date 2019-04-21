@@ -160,11 +160,10 @@ tell that "Tabs" window should be on the top by default.
 
 - this.props.navigation.goBack() will be helpful for closing the modal dialog.
 
-# Current Step:
-
 14. Lets ensure text fields Dont get covered by onScreen keyboard.
 
 - Lets add 3 fields to AddReview page.
+
   1. TextField to enter name of the person giving the review
   2. Star rating
   3. TextArea to enter the review.
@@ -172,34 +171,40 @@ tell that "Tabs" window should be on the top by default.
   5. yarn add react-native-keyboard-aware-scrollview
   6. First Problem I faced. The moment I wrapped my AddReview component with KeyboardAwareScrollView, the inner container's flex:1 stopped working.
 
-```
-    return <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#FFF' }} >
-      <View style={styles.container}> ==> flex:1 is NOT WORKING
-      ...
-      </View>
-    </KeyboardAwareScrollView>;
+     ```
+       return <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#FFF' }} >
+         <View style={styles.container}> ==> flex:1 is NOT WORKING
+         ...
+         </View>
+       </KeyboardAwareScrollView>;
 
-```
+     ```
 
-I solved it using contentContainerStyle={{ flexGrow: 1 }}
+     I solved it using contentContainerStyle={{ flexGrow: 1 }}
 
-```
-    return <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#FFF' }} contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={styles.container}> ==> flex:1 is WORKING
-      ...
-      </View>
-    </KeyboardAwareScrollView>;
+     ```
+       return <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#FFF' }} contentContainerStyle={{ flexGrow: 1 }}>
+         <View style={styles.container}> ==> flex:1 is WORKING
+         ...
+         </View>
+       </KeyboardAwareScrollView>;
 
-```
+     ```
 
-7.  Next problem I faced is:
-    When I try to enter the review text at bottom of the screen, auto scroll is NOT working. Phone Keyboard is still hiding the tect area.
+  7. Next problem I faced is:
+     When I try to enter the review text at bottom of the screen, auto scroll is NOT working. Phone Keyboard is still hiding the tect area.
 
-I solved iby wrapping the contents using KeyboardAvoidingView.
+     I solved iby wrapping the contents using KeyboardAvoidingView.
 
-```
-      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FFF' }} behavior="padding" >
-      ...
-      </KeyboardAvoidingView>
+     ```
+       <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#FFF' }} behavior="padding" >
+       ...
+       </KeyboardAvoidingView>
 
-```
+     ```
+
+# Current Step:
+
+15. Lets save the review when someone clicks "Submit Review" button.
+
+- Major take away here is how to show the spinner.

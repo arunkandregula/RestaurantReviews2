@@ -1,4 +1,53 @@
 {
+  "reviews": [
+    {
+      "name": "React Cafe",
+      "rating": 5,
+      "comment": "Dummy"
+    },
+    {
+      "id": "ad912077-5a87-4ef9-85a9-d44d76bf4888",
+      "name": "R",
+      "rating": 2,
+      "comment": "T"
+    },
+    {
+      "id": "c56dd2b9-7d48-4059-93cf-91920baae29a",
+      "name": "T",
+      "rating": 0,
+      "comment": "Y"
+    },
+    {
+      "id": "e6e07847-db51-4d86-a058-c7f03ed984db",
+      "name": "T",
+      "rating": 0,
+      "comment": "I"
+    },
+    {
+      "id": "765f264d-82bc-45a5-8a38-f893f2ec2bb3",
+      "name": "R",
+      "rating": 4,
+      "comment": "Y"
+    },
+    {
+      "id": "699c4177-2a2d-4967-bc62-54aa8f54f0ed",
+      "name": "Y",
+      "rating": 0,
+      "comment": "U"
+    },
+    {
+      "id": "5b2a2900-1a2b-463f-a2cd-b911f453e95f",
+      "name": "Y",
+      "rating": 4,
+      "comment": "I"
+    },
+    {
+      "id": "5dbdf057-a002-4727-a6c6-234dc879463a",
+      "name": "Y",
+      "rating": 4,
+      "comment": "H"
+    }
+  ],
   "places": [
     {
       "id": 1,
