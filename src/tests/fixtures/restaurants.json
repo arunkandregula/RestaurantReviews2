@@ -52,6 +52,12 @@
       "name": "T",
       "rating": 4,
       "comment": "Y"
+    },
+    {
+      "id": "86763fa6-9281-4159-9576-4d67e2ce3920",
+      "name": "SD",
+      "rating": 3,
+      "comment": "SD"
     }
   ],
   "places": [

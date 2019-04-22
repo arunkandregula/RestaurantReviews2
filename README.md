@@ -207,6 +207,8 @@ tell that "Tabs" window should be on the top by default.
 
 - Major take away here is how to show the spinner.
 
+16. Lets see how to load data from AsyncStorage for prefilled data.
+
 # Current Step:
 
-16. Lets see how to load data from AsyncStorage for prefilled data.
+17. Lets see how to create a custom splash screen. [Youtube Resource](https://www.youtube.com/watch?v=H0CC1UsvjDQ)
